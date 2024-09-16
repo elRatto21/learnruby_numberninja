@@ -1,5 +1,9 @@
 # Tasks to learn Ruby basics
 
+## Start program
+
+``ruby number_ninja.rb``
+
 ## Aufgaben
 
 Nachdem ihr die grundlegende Implementierung getestet habt, erweitert das Spiel um die folgenden Funktionen:
