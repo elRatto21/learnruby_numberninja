@@ -7,17 +7,23 @@ class NumberNinja
     def play
       puts "Willkommen bei NumberNinja! Errate die Zahl zwischen 0 und 100."
       loop do
-        @tries += 1
         print "Gib deine Vermutung ein: "
         guess = gets.chomp.to_i
 
-        if guess == @secret_number
-          puts "Glückwunsch! Du hast die Zahl in #{@tries} Versuchen erraten!"
-          break
-        elsif guess < @secret_number
-          puts "Zu niedrig! Versuche es nochmal."
+        # Validation
+        if guess > 100 or guess < 0
+            puts "Fehlerhafte Eingabe. Bitte erneut versuchen"
         else
-          puts "Zu hoch! Versuche es nochmal."
+            @tries += 1
+
+            if guess == @secret_number
+                puts "Glückwunsch! Du hast die Zahl in #{@tries} Versuchen erraten!"
+                break
+              elsif guess < @secret_number
+                puts "Zu niedrig! Versuche es nochmal."
+              else
+                puts "Zu hoch! Versuche es nochmal."
+              end
         end
       end
     end
