@@ -1,20 +1,35 @@
 class NumberNinja
-    def play
-        @tries = 0
-        puts "Willkommen bei NumberNinja! Wähle bitte zuerst einen Schwierigkeitsgrad aus."
-        puts "leicht: 0-50, mittel: 0-100, schwer: 0-200"
+    def start
+        puts "Willkommen bei NumberNinja!"
 
-        difficulty = gets.chomp
-        
-        case difficulty
-        when "leicht"
-            @max = 50
-        when "mittel"
-            @max = 100
-        when "schwer"
-            @max = 200
+        loop do
+            puts "Wähle bitte einen Schwierigkeitsgrad aus."
+            puts "leicht: 0-50, mittel: 0-100, schwer: 0-200"
+
+            difficulty = gets.chomp
+            
+            case difficulty
+            when "leicht"
+                @max = 50
+            when "mittel"
+                @max = 100
+            when "schwer"
+                @max = 200
+            end
+
+            game_round()
+            break unless new_round?
         end
+    end
 
+    def new_round?
+        puts "Do you want to play again? (y/n)"
+        play_again = gets.chomp
+        play_again.downcase == "y"
+    end
+
+    def game_round
+        @tries = 0
         @secret_number = rand(0...@max.to_i)
 
         puts "Errate nun die Zahl zwischen 0 und #{@max}."
@@ -43,5 +58,5 @@ class NumberNinja
 end
   
 game = NumberNinja.new
-game.play
+game.start
   
